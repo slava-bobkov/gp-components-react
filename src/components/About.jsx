@@ -4,9 +4,9 @@ import { GpCard } from "./gp-react/GpCard";
 function About() {
   return (
     <div>
-      <GpCard>
-        <h1>This is the about page</h1>
-      </GpCard>
+      {/* <GpCard> */}
+      <h1>This is the about page</h1>
+      {/* </GpCard> */}
     </div>
   );
 }
