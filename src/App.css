@@ -1,4 +1,4 @@
-.App-container {
+.App {
   display: grid;
   grid-template-areas:
     "header header"
@@ -9,18 +9,19 @@
   height: 100vh;
 }
 
-.Nav-container {
+.Nav {
   grid-area: header;
   display: flex;
   background-color: #282c34;
 }
 
-.Sidebar-container {
+.Sidebar {
   grid-area: sidebar;
 }
 
-.Routes-container {
+.Routes {
   grid-area: routes;
+  padding: 20px;
 }
 
 .link-item {

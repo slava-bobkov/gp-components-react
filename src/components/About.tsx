@@ -1,14 +1,14 @@
 import React from "react";
-import { GpCard } from "./gp-react/GpCard";
+import GpCard from "../gp-react/GpCard";
 
-function About() {
+const About: React.FC<{}> = () => {
   return (
     <div>
-      {/* <GpCard> */}
+      <GpCard>
       <h1>This is the about page</h1>
-      {/* </GpCard> */}
+      </GpCard>
     </div>
   );
-}
+};
 
 export default About;

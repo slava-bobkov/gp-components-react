@@ -2,46 +2,60 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  // Where files should be sent once they are bundled
+  entry: path.join(__dirname, "src", "index.tsx"),
   output: {
-    path: path.join(__dirname, "/dist"),
+    path: path.join(__dirname, "build"),
     filename: "index.bundle.js",
   },
-  // webpack 5 comes with devServer which loads in development mode
-  devServer: {
-    port: 3000,
-    watchContentBase: true,
-  },
-  // Rules of how webpack will take our files, complie & bundle them for the browser
+  mode: process.env.NODE_ENV || "development",
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: /nodeModules/,
-        use: {
-          loader: "babel-loader",
-        },
+        exclude: /node_modules/,
+        use: ["babel-loader"],
       },
       {
-        test: /\.css$/,
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: ["ts-loader"],
+      },
+      {
+        test: /\.(css|scss)$/,
         use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.(jpg|jpeg|png|gif|mp3|svg)$/,
+        use: ["file-loader"],
       },
       {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
         use: ["url-loader?limit=100000"],
       },
+      {
+        test: /\.m?js/,
+        resolve: {
+          fullySpecified: false,
+        },
+      },
     ],
   },
   resolve: {
-    extensions: ["", ".js", ".jsx"],
+    extensions: [".tsx", ".ts", ".js"],
+    modules: [path.resolve(__dirname, "src"), "node_modules"],
+    alias: {
+      "@enersis/gp-components": path.resolve(
+        __dirname,
+        "node_modules/@enersis/gp-components"
+      ),
+    },
   },
-  // resolve: {
-  //   alias: {
-  //     "@enersis/gp-components": path.resolve(
-  //       __dirname,
-  //       "./node_modules/@enersis/gp-components"
-  //     ),
-  //   },
-  // },
-  plugins: [new HtmlWebpackPlugin({ template: "./src/index.html" })],
+  devServer: {
+    contentBase: path.join(__dirname, "src"),
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, "src", "index.html"),
+    }),
+  ],
 };
