@@ -45,8 +45,8 @@ class App extends React.Component<AppProps, AppState> {
     return (
       <main className="App">
         <Nav navs={this.state.navs}></Nav>
-        {/* <RoutedSidebar /> */}
-        <Sidebar />
+        <RoutedSidebar />
+        {/* <Sidebar /> */}
         <div className="Routes">
           <Routes>
             <Route path="/" element={<Home />} />

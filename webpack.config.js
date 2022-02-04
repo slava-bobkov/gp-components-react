@@ -6,6 +6,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, "build"),
     filename: "index.bundle.js",
+    publicPath: "/",
   },
   mode: process.env.NODE_ENV || "development",
   module: {
@@ -52,6 +53,9 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, "src"),
+    historyApiFallback: true,
+    contentBase: "./",
+    hot: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
