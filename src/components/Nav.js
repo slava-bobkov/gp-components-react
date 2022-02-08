@@ -1,12 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Nav: React.FC<{
-  navs: Array<{
-    id: string;
-    label: string
-  }>;
-}> = (props) => {
+const Nav = (props) => {
   return (
     <nav className="Nav">
       {props.navs.map((nav) => (
@@ -16,6 +11,6 @@ const Nav: React.FC<{
       ))}
     </nav>
   );
-}
+};
 
 export default Nav;

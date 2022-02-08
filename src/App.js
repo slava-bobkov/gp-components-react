@@ -1,26 +1,16 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
-import "./App.css";
-
 import Nav from "./components/Nav";
 import Home from "./components/Home";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import RoutedSidebar from "./components/RoutedSidebar";
-import Sidebar from "./components/Sidebar";
 
-type AppProps = any;
+import "./App.css";
 
-interface AppState {
-  navs: Array<{
-    id: string;
-    label: string;
-  }>;
-}
-
-class App extends React.Component<AppProps, AppState> {
-  constructor(props: AppProps) {
+class App extends React.Component {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -46,7 +36,6 @@ class App extends React.Component<AppProps, AppState> {
       <main className="App">
         <Nav navs={this.state.navs}></Nav>
         <RoutedSidebar />
-        {/* <Sidebar /> */}
         <div className="Routes">
           <Routes>
             <Route path="/" element={<Home />} />
